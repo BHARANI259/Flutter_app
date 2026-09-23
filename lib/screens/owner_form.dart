@@ -1,0 +1,105 @@
+import 'package:flutter/material.dart';
+import 'owner_dashboard.dart';
+
+class OwnerForm extends StatelessWidget {
+  const OwnerForm({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final name = TextEditingController();
+    final budget = TextEditingController();
+    final workers = TextEditingController();
+    final floors = TextEditingController();
+
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Construction Details'),
+      ),
+      backgroundColor: Colors.grey[100],
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(24),
+        child: Column(
+          children: [
+            const Icon(
+              Icons.business,
+              size: 60,
+              color: Colors.orange,
+            ),
+
+            const SizedBox(height: 15),
+
+            const Text(
+              'Site Details',
+              style: TextStyle(
+                fontSize: 26,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+
+            const SizedBox(height: 25),
+
+            TextField(
+              controller: name,
+              decoration: const InputDecoration(
+                hintText: 'Owner Name',
+              ),
+            ),
+
+            const SizedBox(height: 15),
+
+            TextField(
+              controller: budget,
+              keyboardType: TextInputType.number,
+              decoration: const InputDecoration(
+                hintText: 'Project Budget',
+              ),
+            ),
+
+            const SizedBox(height: 15),
+
+            TextField(
+              controller: workers,
+              keyboardType: TextInputType.number,
+              decoration: const InputDecoration(
+                hintText: 'Number of Workers',
+              ),
+            ),
+
+            const SizedBox(height: 15),
+
+            TextField(
+              controller: floors,
+              keyboardType: TextInputType.number,
+              decoration: const InputDecoration(
+                hintText: 'Number of Floors',
+              ),
+            ),
+
+            const SizedBox(height: 25),
+
+            SizedBox(
+              width: double.infinity,
+              height: 50,
+              child: ElevatedButton(
+                onPressed: () {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => OwnerDashboard(
+                        ownerName: name.text,
+                        budget: budget.text,
+                        workers: workers.text,
+                        floors: floors.text,
+                      ),
+                    ),
+                  );
+                },
+                child: const Text('Continue'),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
