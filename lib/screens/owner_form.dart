@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'owner_dashboard.dart';
 
 class OwnerForm extends StatelessWidget {
-  const OwnerForm({super.key});
+  const OwnerForm();
 
   @override
   Widget build(BuildContext context) {
     final name = TextEditingController();
+    final email = TextEditingController();
     final budget = TextEditingController();
     final workers = TextEditingController();
     final floors = TextEditingController();
@@ -20,14 +21,6 @@ class OwnerForm extends StatelessWidget {
         padding: const EdgeInsets.all(24),
         child: Column(
           children: [
-            const Icon(
-              Icons.business,
-              size: 60,
-              color: Colors.orange,
-            ),
-
-            const SizedBox(height: 15),
-
             const Text(
               'Site Details',
               style: TextStyle(
@@ -42,6 +35,16 @@ class OwnerForm extends StatelessWidget {
               controller: name,
               decoration: const InputDecoration(
                 hintText: 'Owner Name',
+              ),
+            ),
+
+            const SizedBox(height: 15),
+
+            TextField(
+              controller: email,
+              keyboardType: TextInputType.emailAddress,
+              decoration: const InputDecoration(
+                hintText: 'Email ID',
               ),
             ),
 
