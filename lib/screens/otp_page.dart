@@ -2,21 +2,21 @@ import 'package:flutter/material.dart';
 import 'owner_form.dart';
 
 class OtpPage extends StatefulWidget {
-  const OtpPage({super.key});
+  const OtpPage();
 
   @override
   State<OtpPage> createState() => _OtpPageState();
 }
 
 class _OtpPageState extends State<OtpPage> {
-  final otp = TextEditingController();
+  final otp = TextEditingController();    //helps get the text typed in the OTP box
   String error = '';
 
   void verifyOtp() {
     if (otp.text == '123456') {
-      Navigator.pushReplacement(
+      Navigator.pushReplacement(     // if otp crt naa,otp page to next page
         context,
-        MaterialPageRoute(builder: (_) => const OwnerForm()),
+        MaterialPageRoute(builder: (_) => const OwnerForm()),   // next page is owner page
       );
     } else {
       setState(() => error = 'Enter correct OTP');
@@ -33,14 +33,6 @@ class _OtpPageState extends State<OtpPage> {
         child: Column(
           children: [
             const SizedBox(height: 40),
-
-            const Icon(
-              Icons.verified_user,
-              size: 60,
-              color: Colors.orange,
-            ),
-
-            const SizedBox(height: 20),
 
             const Text(
               'Enter OTP',

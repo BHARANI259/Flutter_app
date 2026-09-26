@@ -9,9 +9,9 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  final phone = TextEditingController();
-  String role = 'Owner';
-  String error = '';
+  final phone = TextEditingController();    //TextEditingController=a box that stores what we type
+  String role = 'Owner';    //initially owner should be shown
+  String error = '';  // shows error ,if error occurs
 
   void sendOtp() {
     if (phone.text.length != 10) {
@@ -24,9 +24,9 @@ class _LoginPageState extends State<LoginPage> {
       return;
     }
 
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (_) => const OtpPage()),
+    Navigator.push(   //move to other page
+      context,  //current page
+      MaterialPageRoute(builder: (_) => const OtpPage()),   //next otppage should open
     );
   }
 
@@ -35,16 +35,16 @@ class _LoginPageState extends State<LoginPage> {
     return Scaffold(
       backgroundColor: Colors.grey[100],
       body: Padding(
-        padding: const EdgeInsets.all(24),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+        padding: const EdgeInsets.all(24),  //spaces on 4 corners
+        child: Column(   //data one below other
+          crossAxisAlignment: CrossAxisAlignment.start,   //left to right
           children: [
-            const SizedBox(height: 50),
+            const SizedBox(height: 50),   //50 pixels below the title
 
             const Text(
               'Welcome to BuildCare',
               style: TextStyle(
-                fontSize: 28,
+                fontSize: 28,   // makes the text large
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -66,7 +66,6 @@ class _LoginPageState extends State<LoginPage> {
                 counterText: '',
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
-                  borderSide: BorderSide.none,
                 ),
               ),
             ),
@@ -84,7 +83,7 @@ class _LoginPageState extends State<LoginPage> {
               children: [
                 Radio(
                   value: 'Owner',
-                  groupValue: role,
+                  groupValue: role,   // role - supervisor or owner
                   onChanged: (value) {
                     setState(() => role = value.toString());
                   },
@@ -102,7 +101,7 @@ class _LoginPageState extends State<LoginPage> {
               ],
             ),
 
-            if (error.isNotEmpty)
+            if (error.isNotEmpty)     //ex., Enter 10 digits - show in red olor
               Text(
                 error,
                 style: const TextStyle(color: Colors.red),

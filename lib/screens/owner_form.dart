@@ -17,8 +17,8 @@ class OwnerForm extends StatelessWidget {
         title: const Text('Construction Details'),
       ),
       backgroundColor: Colors.grey[100],
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.all(24),
+      body: SingleChildScrollView(    //makes the page scrollable
+        padding: const EdgeInsets.all(24),   //spaces at 4 corners
         child: Column(
           children: [
             const Text(
@@ -78,6 +78,7 @@ class OwnerForm extends StatelessWidget {
               ),
             ),
 
+            //elevated button
             const SizedBox(height: 25),
 
             SizedBox(
@@ -88,7 +89,7 @@ class OwnerForm extends StatelessWidget {
                   Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(
-                      builder: (_) => OwnerDashboard(
+                      builder: (_) => OwnerDashboard(   //Pass the form data to the dashboard
                         ownerName: name.text,
                         budget: budget.text,
                         workers: workers.text,
